@@ -17,10 +17,10 @@
 要设置和运行此项目，请按照以下步骤操作：
 
 1.  **克隆仓库：**
-    ```bash
-    git clone [repository_url]
-    cd image-convert
-    ```
+    ```bash  
+    git clone https://github.com/Jackchou00/hdr-sticker
+    cd hdr-sticker 
+    ```  
 
 2.  **虚拟环境：**
     ```bash

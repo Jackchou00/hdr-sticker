@@ -18,8 +18,8 @@ To set up and run this project, follow these steps:
 
 1.  **Clone the repository:**  
     ```bash  
-    git clone [repository_url]  
-    cd image-convert  
+    git clone https://github.com/Jackchou00/hdr-sticker
+    cd hdr-sticker 
     ```  
 
 2.  **Set up the virtual environment:**  
