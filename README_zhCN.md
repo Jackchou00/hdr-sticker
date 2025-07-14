@@ -47,4 +47,19 @@
 uv run main.py
 ```
 
+处理行为可通过 `config.toml` 配置：
+
+```toml
+[paths]
+input_image          = "example.png"                 # 输入文件名
+converted_image      = "output_image.png"            # 中间转换图片
+icc_source_image     = "ori_hdr_image/hdr_frog.png"  # 提取 ICC 的图片
+final_output_image   = "output_image_with_icc.png"   # 最终输出
+
+[color_conversion]
+peak_luminance = 1600   # HDR 峰值亮度（nits）
+```
+
+调整上述参数可选择原图 ICC 源、输出路径和 HDR 峰值亮度。
+
 默认的输入图片是 `example.png`，输出是`output_image_with_icc.png`，QQ 中，“图片”是不能依靠 ICC 激发 HDR 亮度的，需要是“动画表情”的状态，一种方法是先发送图片，再长按选择“添加表情”。目前只有 iOS（OLED 设备）能够激发 HDR 亮度，macOS 和 Windows 的策略是 ICC Tone Mapping，使用本方法获得的表情基本也能够正常显示，安卓不能够正常显示。

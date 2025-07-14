@@ -3,13 +3,14 @@ from PIL import Image
 import numpy as np
 
 
-def convert_to_rec2020_pq(input_image_path, output_image_path):
+def convert_to_rec2020_pq(input_image_path, output_image_path, peak_luminance=1600):
     """
     Reads an image, converts its color space to Rec.2020 PQ, and saves the output.
 
     Args:
         input_image_path (str): Path to the input image file.
         output_image_path (str): Path to save the output image file.
+        peak_luminance (int, optional): Peak luminance in nits for PQ conversion. Defaults to 1600.
     """
     with Image.open(input_image_path) as img:
         arr = np.asarray(img)
@@ -26,8 +27,8 @@ def convert_to_rec2020_pq(input_image_path, output_image_path):
         arr, input_colourspace="sRGB", output_colourspace="ITU-R BT.2020"
     )  # Convert sRGB to Rec.2020 color space
     arr = colour.eotf_inverse(
-        arr * 1600, "ITU-R BT.2100 PQ"
-    )  # Apply PQ EOTF inverse, scaling by 1600 nits peak luminance
+        arr * peak_luminance, "ITU-R BT.2100 PQ"
+    )  # Apply PQ EOTF inverse, scaling by peak luminance in nits
 
     arr = arr * 255.0  # Scale back to [0, 255] range
     arr = arr.astype(np.uint8)  # Convert to uint8 type
@@ -46,4 +47,4 @@ if __name__ == "__main__":
     # Example usage
     input_img = "example.png"  # Example input image
     output_img = "output_image.png"  # Output image after color conversion
-    convert_to_rec2020_pq(input_img, output_img)
+    convert_to_rec2020_pq(input_img, output_img, peak_luminance=1600)

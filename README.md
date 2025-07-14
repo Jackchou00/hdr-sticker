@@ -46,6 +46,21 @@ To process an image, run the `main.py` script:
 uv run main.py
 ```
 
+Settings can be customized in `config.toml`:
+
+```toml
+[paths]
+input_image          = "example.png"                 # input image file name
+converted_image      = "output_image.png"            # intermediate converted image
+icc_source_image     = "ori_hdr_image/hdr_frog.png"  # ICC profile source image
+final_output_image   = "output_image_with_icc.png"   # final saved image
+
+[color_conversion]
+peak_luminance = 1600   # Peak luminance in nits
+```
+
+Adjust these parameters to change which images are processed or tune the HDR peak luminance.
+
 Default input image: `example.png`  
 Default output: `output_image_with_icc.png`
 

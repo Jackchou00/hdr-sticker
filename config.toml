@@ -1,0 +1,8 @@
+[paths]
+input_image = "example.png"
+converted_image = "output_image.png"
+icc_source_image = "ori_hdr_image/hdr_frog.png"
+final_output_image = "output_image_with_icc.png"
+
+[color_conversion]
+peak_luminance = 1600  # Peak luminance in nits for PQ conversion
